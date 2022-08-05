@@ -7,4 +7,6 @@
     <string name="iniciar_sesi_n">Iniciar sesión</string>
     <string name="no_tienes_usuario_solicita_uno">¿No tienes usuario? Solicita uno</string>
     <string name="aqui">Aquí</string>
+    <string name="param">Ancho de Banda</string>
+    <string name="param2">Potencia</string>
 </resources>

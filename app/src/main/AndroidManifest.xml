@@ -16,6 +16,9 @@
         android:theme="@style/Theme.TrackFM"
         tools:targetApi="31">
         <activity
+            android:name=".Dispositivoseleccionado"
+            android:exported="false" />
+        <activity
             android:name=".ListaDispositivos"
             android:exported="false" />
         <activity
