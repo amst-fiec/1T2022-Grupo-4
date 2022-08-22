@@ -24,6 +24,11 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -33,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth mAuth;
     GoogleSignInClient mGoogleSignInClient;
+    DatabaseReference db_reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        db_reference = FirebaseDatabase.getInstance().getReference().child("usuarios");
 
         mAuth = FirebaseAuth.getInstance();
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -64,16 +72,60 @@ public class MainActivity extends AppCompatActivity {
         EditText us = findViewById(R.id.usuario);
         String usuario = us.getText().toString();
         List<String> usuariosdisp = Arrays.asList("ifmieles","jvaca","kmena");
+        List<String> usuariosdis = Arrays.asList();
+
+        db_reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    usuariosdis.add(String.valueOf(snapshot.getValue()));
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {
+                System.out.println(error.toException());
+            }
+        });
+
+        if (usuariosdis.contains(usuario)){
+            resultLauncher.launch(new Intent(mGoogleSignInClient.getSignInIntent()));
+        }else{
+            if (usuario.isEmpty()){
+                Toast toast = Toast.makeText(getApplicationContext(),"Ingrese usuario",Toast.LENGTH_LONG);
+                toast.show();
+            }
+            else{
+                Toast toast = Toast.makeText(getApplicationContext(),"Usuario no permitido",Toast.LENGTH_LONG);
+                toast.show();
+            }
+
+        }
+
+        /*
         if (usuariosdisp.contains(usuario)){
             resultLauncher.launch(new Intent(mGoogleSignInClient.getSignInIntent()));
         }else{
-            Toast toast = Toast.makeText(getApplicationContext(),"Usuario no permitido",Toast.LENGTH_LONG);
-            toast.show();
+            if (usuario.isEmpty()){
+                Toast toast = Toast.makeText(getApplicationContext(),"Ingrese usuario",Toast.LENGTH_LONG);
+                toast.show();
+            }
+            else{
+                Toast toast = Toast.makeText(getApplicationContext(),"Usuario no permitido",Toast.LENGTH_LONG);
+                toast.show();
+            }
+
         }
+         */
+
+
         
     }
     private void cerrarSesion() {
         mGoogleSignInClient.signOut().addOnCompleteListener(this, task -> updateUI(null));
+    }
+    public void solicitarusuario(View view) {
+        Intent i = new Intent(MainActivity.this, Solitusuario.class);
+        startActivity(i);
     }
 
     ActivityResultLauncher<Intent> resultLauncher = registerForActivityResult(new
