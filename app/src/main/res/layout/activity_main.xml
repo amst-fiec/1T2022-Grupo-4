@@ -55,7 +55,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtsolus" />
 
     <Button
-        android:id="@+id/btnsolusuario"
+        android:id="@+id/btninsesion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="340dp"
@@ -76,7 +76,7 @@
         android:layout_marginTop="48dp"
         android:text="@string/no_tienes_usuario_solicita_uno"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnsolusuario" />
+        app:layout_constraintTop_toBottomOf="@+id/btninsesion" />
 
     <TextView
         android:id="@+id/txtaqui"
@@ -88,7 +88,7 @@
         android:text="@string/aqui"
         android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/btnsolusuario" />
+        app:layout_constraintTop_toBottomOf="@+id/btninsesion" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

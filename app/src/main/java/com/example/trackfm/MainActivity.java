@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -30,7 +31,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -46,10 +49,11 @@ public class MainActivity extends AppCompatActivity {
         setTheme(R.style.Theme_TrackFM);
 
 
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        db_reference = FirebaseDatabase.getInstance().getReference().child("usuarios");
+        db_reference = FirebaseDatabase.getInstance().getReference().child("Usuarios");
 
         mAuth = FirebaseAuth.getInstance();
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -68,18 +72,38 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+
     public void iniciarSesion(View view) {
         EditText us = findViewById(R.id.usuario);
         String usuario = us.getText().toString();
-        List<String> usuariosdisp = Arrays.asList("ifmieles","jvaca","kmena");
-        List<String> usuariosdis = Arrays.asList();
+        //List<String> usuariosdisp = Arrays.asList("ifmieles","jvaca","kmena");
+
 
         db_reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+
+                List<String> usuariosdis= new ArrayList<>();
+
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    usuariosdis.add(String.valueOf(snapshot.getValue()));
+                    String usua = String.valueOf(snapshot.child("usuario").getValue());
+                    usuariosdis.add(usua);
                 }
+
+                if (usuariosdis.contains(usuario)){
+                    resultLauncher.launch(new Intent(mGoogleSignInClient.getSignInIntent()));
+                }else{
+                    if (usuario.isEmpty()){
+                        Toast toast = Toast.makeText(getApplicationContext(),"Ingrese usuario",Toast.LENGTH_LONG);
+                        toast.show();
+                    }
+                    else{
+                        Toast toast = Toast.makeText(getApplicationContext(),"Usuario no permitido",Toast.LENGTH_LONG);
+                        toast.show();
+                    }
+
+                }
+
             }
             @Override
             public void onCancelled(DatabaseError error) {
@@ -87,19 +111,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        if (usuariosdis.contains(usuario)){
-            resultLauncher.launch(new Intent(mGoogleSignInClient.getSignInIntent()));
-        }else{
-            if (usuario.isEmpty()){
-                Toast toast = Toast.makeText(getApplicationContext(),"Ingrese usuario",Toast.LENGTH_LONG);
-                toast.show();
-            }
-            else{
-                Toast toast = Toast.makeText(getApplicationContext(),"Usuario no permitido",Toast.LENGTH_LONG);
-                toast.show();
-            }
-
-        }
 
         /*
         if (usuariosdisp.contains(usuario)){
@@ -117,8 +128,6 @@ public class MainActivity extends AppCompatActivity {
         }
          */
 
-
-        
     }
     private void cerrarSesion() {
         mGoogleSignInClient.signOut().addOnCompleteListener(this, task -> updateUI(null));
