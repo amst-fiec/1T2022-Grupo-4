@@ -16,6 +16,9 @@
         android:theme="@style/Theme.TrackFM"
         tools:targetApi="31">
         <activity
+            android:name=".Perfil"
+            android:exported="false" />
+        <activity
             android:name=".Solitusuario"
             android:exported="false" />
         <activity

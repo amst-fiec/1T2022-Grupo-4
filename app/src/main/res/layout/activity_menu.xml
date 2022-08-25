@@ -20,11 +20,13 @@
         android:id="@+id/btndc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="136dp"
         android:onClick="listadisps"
         android:text="Dispositivos Conectados"
         app:backgroundTint="#333333"
+        app:cornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgicon" />
 
@@ -32,11 +34,12 @@
         android:id="@+id/btnpar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        app:backgroundTint="#333333"
+        android:layout_marginTop="32dp"
         android:text="Parámetros"
+        app:backgroundTint="#333333"
+        app:cornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btndc" />
 
@@ -62,7 +65,8 @@
         app:layout_constraintBottom_toTopOf="@+id/txtg4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:cornerRadius="20dp"/>
 
     <TextView
         android:id="@+id/txtbien"
@@ -73,5 +77,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgicon" />
+
+    <ImageView
+        android:id="@+id/imgperf"
+        android:layout_width="67dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtbien"
+        app:srcCompat="@drawable/icus" />
+
+    <TextView
+        android:id="@+id/txtperf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Perfil"
+        app:layout_constraintEnd_toStartOf="@+id/imgperf"
+        app:layout_constraintTop_toBottomOf="@+id/txtbien" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
