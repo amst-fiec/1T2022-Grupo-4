@@ -6,10 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
-
 import com.google.firebase.auth.FirebaseAuth;
-
 import java.util.HashMap;
 
 
@@ -41,7 +38,7 @@ public class Menu extends AppCompatActivity {
     }
 
     //Boton para ir al activity ListaDispositivos
-    public void listadisps(View v){
+    public void listadisps(View view){
         Intent i = new Intent(getBaseContext(), ListaDispositivos.class);
         startActivity(i);
     }

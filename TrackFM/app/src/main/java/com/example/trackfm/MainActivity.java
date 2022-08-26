@@ -11,10 +11,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -30,10 +28,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -120,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Metodo para llenar un formulario y pedir usuario de acceso a la app
-    public void solicitarusuario(View view) {
+    public void solicitarusuario() {
         Intent i = new Intent(MainActivity.this, Solitusuario.class);
         startActivity(i);
     }

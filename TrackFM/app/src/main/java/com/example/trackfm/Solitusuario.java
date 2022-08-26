@@ -9,12 +9,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.Arrays;
-import java.util.List;
 
 public class Solitusuario extends AppCompatActivity {
 
-    Intent emailIntent = new Intent(Intent.ACTION_SEND);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +42,7 @@ public class Solitusuario extends AppCompatActivity {
             //Envío de solicitud de usuario
 
             String[] to = {"ifermieles@gmail.com"};
+            Intent emailIntent = new Intent(Intent.ACTION_SEND);
             emailIntent.setData(Uri.parse("mailto:"));
             emailIntent.setType("text/plain");
             emailIntent.putExtra(Intent.EXTRA_EMAIL, to);
