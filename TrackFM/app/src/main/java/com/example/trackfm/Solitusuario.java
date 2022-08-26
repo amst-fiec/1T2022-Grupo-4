@@ -32,6 +32,7 @@ public class Solitusuario extends AppCompatActivity {
         EditText cor = findViewById(R.id.correo);
         String correo = cor.getText().toString();
 
+        //Verificacion que los campos del formulario estén completos para enviar la solicitud.
         if(nombre.isEmpty()||cedula.isEmpty()||telefono.isEmpty()||correo.isEmpty()){
             Toast toast = Toast.makeText(getApplicationContext(),"Datos Incompletos",Toast.LENGTH_LONG);
             toast.show();
@@ -41,7 +42,7 @@ public class Solitusuario extends AppCompatActivity {
             toast.show();
 
             //Envío de solicitud de usuario
-            /*
+
             String[] to = {"ifermieles@gmail.com"};
             emailIntent.setData(Uri.parse("mailto:"));
             emailIntent.setType("text/plain");
@@ -52,7 +53,7 @@ public class Solitusuario extends AppCompatActivity {
                     "Cedula/RUC:" + cedula +"\n" +
                     "Teléfono:" + telefono + "\n" +
                     "Correo:" + correo+ "\n");
-             */
+
 
         }
 

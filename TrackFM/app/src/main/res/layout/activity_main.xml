@@ -45,7 +45,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtsolus" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/txtuar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="120dp"
@@ -70,7 +70,7 @@
         app:cornerRadius="20dp"/>
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/txtntu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="130dp"
@@ -88,7 +88,7 @@
         android:onClick="solicitarusuario"
         android:text="@string/aqui"
         android:textColor="#000000"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintStart_toEndOf="@+id/txtntu"
         app:layout_constraintTop_toBottomOf="@+id/btninsesion"
         tools:ignore="TouchTargetSizeCheck" />
 

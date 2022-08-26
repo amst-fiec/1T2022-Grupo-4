@@ -44,6 +44,8 @@ public class Dispositivoseleccionado extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dispositivoseleccionado);
 
+        //Declaracion de variables
+
         db_reference = FirebaseDatabase.getInstance().getReference().child("datos");
 
         TextView dispositivoselec = (TextView) findViewById(R.id.dispositivo);
@@ -61,10 +63,12 @@ public class Dispositivoseleccionado extends AppCompatActivity {
         dispositivoselec.setText(bundle.getString("id"));
         parametro.setText(pa);
 
+        //Analisis de parametro seleccionado para mostrar valores asociados de la Base de Datos
+
         if (pa.equals("Potencia Reflejada")){
-            valor.setText("30 W");
-            //leerparamatros(valor,id1,u1u2);
-            //grafico(id1);
+
+            leerparamatros(valor,id1,u1u2);
+            grafico(id1);
 
         }
         else if (pa.equals("Potencia")) {
@@ -74,19 +78,20 @@ public class Dispositivoseleccionado extends AppCompatActivity {
 
         }
         else if (pa.equals("Corriente")) {
-            valor.setText("90 A");
-            //leerparamatros(valor,id3,u3);
-            //grafico(id3);
+
+            leerparamatros(valor,id3,u3);
+            grafico(id3);
         }
         else if (pa.equals("Voltaje")) {
-            valor.setText("90 V");
-            //leerparamatros(valor,id4,u4);
-            //grafico(id4);
+
+            leerparamatros(valor,id4,u4);
+            grafico(id4);
         }
 
 
     }
 
+    //Metodo que lee la base de datos para los parametros
     private void leerparamatros(TextView valor, String id, String unidad){
         db_reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -103,6 +108,7 @@ public class Dispositivoseleccionado extends AppCompatActivity {
         });
     }
 
+    //Metodo que lee la base de datos y muestra el grafico lineal
     private void grafico(String id){
 
         db_reference.addValueEventListener(new ValueEventListener() {

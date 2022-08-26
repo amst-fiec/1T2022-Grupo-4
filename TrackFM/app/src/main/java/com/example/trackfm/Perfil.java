@@ -19,6 +19,9 @@ public class Perfil extends AppCompatActivity {
         setContentView(R.layout.activity_perfil);
         Bundle bundle = getIntent().getExtras();
 
+
+
+        //Muestra informacion del usuario que ingresó en patalla
         txt_name = findViewById(R.id.txt_nombre);
         txt_email = findViewById(R.id.txt_correo);
         imv_photo = findViewById(R.id.imv_foto);

@@ -22,6 +22,7 @@ public class Menu extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
 
+        //Botones para ir al activity Perfil y mostar datos de usuario
         ImageView bperfil = findViewById(R.id.imgperf);
         bperfil.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,10 +39,13 @@ public class Menu extends AppCompatActivity {
         });
 
     }
+
+    //Boton para ir al activity ListaDispositivos
     public void listadisps(View v){
         Intent i = new Intent(getBaseContext(), ListaDispositivos.class);
         startActivity(i);
     }
+    //Boton para cerrar sesion
     public void cerrarSesion(View view){
         FirebaseAuth.getInstance().signOut();
         finish();

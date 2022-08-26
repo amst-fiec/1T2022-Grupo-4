@@ -49,10 +49,10 @@ public class MainActivity extends AppCompatActivity {
         setTheme(R.style.Theme_TrackFM);
 
 
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Obtencion de informacion de la cuenta de Google de usuario
         db_reference = FirebaseDatabase.getInstance().getReference().child("Usuarios");
 
         mAuth = FirebaseAuth.getInstance();
@@ -73,10 +73,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //Metodo de inicio de sesion y verificacion de usuarios ingresados
     public void iniciarSesion(View view) {
         EditText us = findViewById(R.id.usuario);
         String usuario = us.getText().toString();
-        //List<String> usuariosdisp = Arrays.asList("ifmieles","jvaca","kmena");
+
 
 
         db_reference.addValueEventListener(new ValueEventListener() {
@@ -112,26 +113,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        /*
-        if (usuariosdisp.contains(usuario)){
-            resultLauncher.launch(new Intent(mGoogleSignInClient.getSignInIntent()));
-        }else{
-            if (usuario.isEmpty()){
-                Toast toast = Toast.makeText(getApplicationContext(),"Ingrese usuario",Toast.LENGTH_LONG);
-                toast.show();
-            }
-            else{
-                Toast toast = Toast.makeText(getApplicationContext(),"Usuario no permitido",Toast.LENGTH_LONG);
-                toast.show();
-            }
-
-        }
-         */
 
     }
     private void cerrarSesion() {
         mGoogleSignInClient.signOut().addOnCompleteListener(this, task -> updateUI(null));
     }
+
+    //Metodo para llenar un formulario y pedir usuario de acceso a la app
     public void solicitarusuario(View view) {
         Intent i = new Intent(MainActivity.this, Solitusuario.class);
         startActivity(i);
