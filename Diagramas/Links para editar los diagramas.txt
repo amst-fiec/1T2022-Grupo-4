@@ -1,0 +1,5 @@
+Diagrama de Clases:
+https://lucid.app/lucidchart/1c38bddf-938e-4c65-8b1c-b0e9f07637ba/edit?viewport_loc=-53%2C408%2C1480%2C692%2CHWEp-vi-RSFO&invitationId=inv_58d7cac6-839f-48ab-9a0a-8e55965370ed#
+
+Diagrama de Casos de Uso:
+https://lucid.app/lucidspark/73d97f28-5851-4d7a-8c81-1f54f2c4fa4f/edit?viewport_loc=556%2C2290%2C4098%2C1971%2C0_0&invitationId=inv_a22ca8aa-d18c-401e-ac34-3cd188c41a28#
